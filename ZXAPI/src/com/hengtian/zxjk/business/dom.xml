@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ZxMsgFormats>
+	<!--借款人基本信息文件 -->
+ 	<ZxFormat class="com.hengtian.zxjk.business.BorrowerInformationMessageSet" type="-1">
+        <ZxNode propertyName="BorrowerInformationMessage" class="com.hengtian.zxjk.business.BorrowerInformationMessage" state="M"/>
+        <ZxNode propertyName="BorrowerInformationMessage2" class="com.hengtian.zxjk.business.BorrowerInformationMessage" state="M"/>
+    </ZxFormat>
+    <!-- 借款人基本信息报文 -->
+    <ZxFormat class="com.hengtian.zxjk.business.BorrowerInformationMessage" messageType="24-1-27" type="0">
+        <ZxNode propertyName="MessageName" class="com.hengtian.zxjk.business.BorrowerInformationMessageName" state="M"/>
+        <ZxNode propertyName="MessageHead" class="com.hengtian.zxjk.business.BorrowerInformationMessageHead" state="M"/>
+        <ZxNode propertyName="BorrowerInformationMessageBody" class="com.hengtian.zxjk.business.BorrowerInformationMessageBody" state="M"/>
+        <ZxNode propertyName="MessageTail" class="com.hengtian.zxjk.business.BorrowerInformationMessageTail" state="M"/>
+    </ZxFormat>
+    <!-- 借款人基本信息报文名 -->
+	<ZxFormat class="com.hengtian.zxjk.business.BorrowerInformationMessageName" bottom="true" type="1">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="6" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum1" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum2" length="3" type="AN" state="M"/>
+	</ZxFormat>
+	 <!-- 借款人基本信息报文头 -->
+	<ZxFormat class="com.hengtian.zxjk.business.BorrowerInformationMessageHead" bottom="true" type="2">
+		<ZxNode propertyName="DataFormatVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="14" type="N" state="M"/>
+		<ZxNode propertyName="SoftwareVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="RetransmissionIndicator" length="1" type="N" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TotalBaseRecords" length="10" type="N" state="M"/>
+		<ZxNode propertyName="EarliestBillingDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="LatestBillingDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="ContactPerson" length="30" type="ANC" state="M"/>
+		<ZxNode propertyName="ContactTelephone" length="25" type="ANC" state="M"/>
+		<ZxNode propertyName="ReservedField" length="30" type="AN" state="O"/>
+	</ZxFormat>
+	 <!-- 借款人基本信息报文体 -->
+	<ZxFormat class="com.hengtian.zxjk.business.BorrowerInformationMessageBody" type="3">
+		<ZxNode propertyName="BorrowerInformationType" class="com.hengtian.zxjk.business.BorrowerInformationType"/>
+	</ZxFormat>
+	 <!-- 借款人基本信息信息记录类型 -->
+	<ZxFormat class="com.hengtian.zxjk.business.BorrowerInformationType" type="4">
+		<ZxNode propertyName="InformationRecordList" class="com.hengtian.zxjk.business.BorrowerInformationRecord"/>
+	</ZxFormat>
+	<!-- 信息记录 -->
+	<ZxFormat class="com.hengtian.zxjk.business.BorrowerInformationRecord" type="5">
+		<ZxNode propertyName="BaseSection" class="com.hengtian.zxjk.business.BaseSection" state="M"/>
+        <ZxNode propertyName="IdentityInfoSection" class="com.hengtian.zxjk.business.IdentityInfoSection" state="C"/>
+	</ZxFormat>
+	<!-- 基础段 -->
+	<ZxFormat class="com.hengtian.zxjk.business.BaseSection" bottom="true" type="A">
+		<ZxNode propertyName="RecordLength" length="4" type="N" state="M"/>
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<!--<ZxNode propertyName="BussinessType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="AccountType" length="2" type="AN" state="M"/>
+		<ZxNode propertyName="OperationNumber" length="40" type="ANC" state="M"/>
+		<ZxNode propertyName="OriginationPlace" length="6" type="N" state="M"/>
+		<ZxNode propertyName="DateOpened" length="8" type="N" state="M"/>
+		<ZxNode propertyName="MatureDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="Currency" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="CreditLimit" length="10" type="N" state="M"/>
+		<ZxNode propertyName="SharedCreditLimit" length="10" type="N" state="M"/>
+		<ZxNode propertyName="HighestCredit" length="10" type="N" state="M"/>
+		<ZxNode propertyName="GuaranteeType" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TermsFrequency" length="2" type="AN" state="M"/>
+		<ZxNode propertyName="TermsDuration" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="MonthsLeftforTermsDuration" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="BillingDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="DateOfLastPayment" length="8" type="N" state="M"/>
+		<ZxNode propertyName="ScheduledMonthlyPaymentAmount" length="10" type="N" state="M"/>
+		<ZxNode propertyName="ActualPaymentAmount" length="10" type="N" state="M"/>
+		<ZxNode propertyName="Balance" length="10" type="N" state="M"/>
+		<ZxNode propertyName="DelinquencyTerm" length="2" type="N" state="M"/>
+		<ZxNode propertyName="AmountPastDue" length="10" type="N" state="M"/>
+		<ZxNode propertyName="NoRepayLoanPrincipal31_60" length="10" type="N" state="M"/>
+		<ZxNode propertyName="NoRepayLoanPrincipal61_90" length="10" type="N" state="M"/>
+		<ZxNode propertyName="NoRepayLoanPrincipal91_180" length="10" type="N" state="M"/>
+		<ZxNode propertyName="NoRepayLoanPrincipalOver180" length="10" type="N" state="M"/>
+		<ZxNode propertyName="DelinquencyCounts" length="3" type="N" state="M"/>
+		<ZxNode propertyName="HighestDelinquencyTerm" length="2" type="N" state="M"/>
+		<ZxNode propertyName="FiveCategoryAssetsClassification" length="1" type="N" state="M"/>
+		<ZxNode propertyName="AccountStatus" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TwentyFourMonthsPaymentStatus" length="24" type="AN" state="M"/>
+		<ZxNode propertyName="OverdraftAmountOver180Days" length="10" type="N" state="M"/>
+		<ZxNode propertyName="IdIndicator" length="1" type="N" state="M"/>
+		<ZxNode propertyName="Name" length="30" type="ANC" state="M"/>
+		<ZxNode propertyName="IdentificationType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="IdentificationNumber" length="18" type="ANC" state="M"/>
+		<ZxNode propertyName="ReservedField" length="30" type="AN" state="O"/>
+-->
+	</ZxFormat>
+	<!-- 身份信息段 -->
+	<ZxFormat class="com.hengtian.zxjk.business.IdentityInfoSection" bottom="true" type="B">
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="Gender" length="1" type="N" state="M"/>
+		<ZxNode propertyName="DateOfBirth" length="8" type="N" state="M"/>
+		<ZxNode propertyName="MaritalStatus" length="2" type="N" state="M"/>
+		<!--<ZxNode propertyName="HighestEducationLevel" length="2" type="N" state="M"/>
+		<ZxNode propertyName="HighestEducationalDegreeObtained" length="1" type="N" state="M"/>
+		<ZxNode propertyName="HomeTelephone" length="25" type="ANC" state="O"/>
+		<ZxNode propertyName="MobileTelephone" length="16" type="AN" state="O"/>
+		<ZxNode propertyName="OfficeTelephone" length="25" type="ANC" state="O"/>
+		<ZxNode propertyName="Email" length="30" type="ANC" state="O"/>
+		<ZxNode propertyName="MailingAddress" length="60" type="ANC" state="M"/>
+		<ZxNode propertyName="PostalCodeOfMailingAddress" length="6" type="N" state="M"/>
+		<ZxNode propertyName="PermanentResidenceAddress" length="60" type="ANC" state="O"/>
+		<ZxNode propertyName="SpouseName" length="30" type="ANC" state="O"/>
+		<ZxNode propertyName="SpouseIdentificationType" length="1" type="AN" state="O"/>
+		<ZxNode propertyName="SpouseIdentificationNumber" length="18" type="ANC" state="O"/>
+		<ZxNode propertyName="SpouseCompanyName" length="60" type="ANC" state="O"/>
+		<ZxNode propertyName="SpouseTelephone" length="25" type="ANC" state="O"/>-->
+	</ZxFormat>
+	 <!-- 借款人基本信息报文尾 -->
+	<ZxFormat class="com.hengtian.zxjk.business.BorrowerInformationMessageTail" bottom="true" type="6">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="6" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum1" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum2" length="3" type="AN" state="M"/>
+	</ZxFormat>
+</ZxMsgFormats>

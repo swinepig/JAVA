@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ZxMsgFormats>
+  <!-- ===============================正常报文====================================== -->
+    <ZxFormat class="com.hengtian.zxjk.entity.message.NormalMessage" messageType="24-1-27">
+        <ZxNode propertyName="NameMessage" class="com.hengtian.zxjk.entity.message.NameNormalMessage" state="M"/>
+        <ZxNode propertyName="HeadMessage" class="com.hengtian.zxjk.entity.message.HeadNormalMessage" state="M"/>
+        <ZxNode propertyName="BodyMessage" class="com.hengtian.zxjk.entity.message.BodyNormalMessage" state="M"/>
+    </ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.NameNormalMessage" bottom="true" type="1">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="6" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum1" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum2" length="3" type="AN" state="M"/>
+	</ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.HeadNormalMessage" bottom="true" type="2">
+		<ZxNode propertyName="DataFormatVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="14" type="N" state="M"/>
+		<ZxNode propertyName="SoftwareVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="RetransmissionIndicator" length="1" type="N" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TotalBaseRecords" length="10" type="N" state="M"/>
+		<ZxNode propertyName="EarliestBillingDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="LatestBillingDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="ContactPerson" length="30" type="ANC" state="M"/>
+		<ZxNode propertyName="ContactTelephone" length="25" type="ANC" state="M"/>
+		<ZxNode propertyName="ReservedField" length="30" type="AN" state="O"/>
+	</ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.BodyNormalMessage" type="3">
+		<ZxNode propertyName="InformationRecordList" class="com.hengtian.zxjk.entity.message.InformationRecord"/>
+	</ZxFormat>
+	<!-- 信息记录 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.InformationRecord" type="4">
+		<ZxNode propertyName="BaseSection" class="com.hengtian.zxjk.entity.message.BaseSection" state="M"/>
+        <ZxNode propertyName="IdentityInfoSection" class="com.hengtian.zxjk.entity.message.IdentityInfoSection" state="C"/>
+        <ZxNode propertyName="ProfessionalInfoSection" class="com.hengtian.zxjk.entity.message.ProfessionalInfoSection" state="C"/>
+        <ZxNode propertyName="ResidentialAddressSection" class="com.hengtian.zxjk.entity.message.ResidentialAddressSection" state="C"/>
+        <ZxNode propertyName="GuaranteeInfoSectionList" class="com.hengtian.zxjk.entity.message.GuaranteeInfoSection" state="C"/>
+        <ZxNode propertyName="TransactionChangeSection" class="com.hengtian.zxjk.entity.message.TransactionChangeSection" state="C"/>
+        <ZxNode propertyName="SpecialTradeSection" class="com.hengtian.zxjk.entity.message.SpecialTradeSection" state="C"/>
+	</ZxFormat>
+	<!-- 基础段 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.BaseSection" bottom="true" type="A">
+		<ZxNode propertyName="RecordLength" length="4" type="N" state="M"/>
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<!--<ZxNode propertyName="BussinessType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="AccountType" length="2" type="AN" state="M"/>
+		<ZxNode propertyName="OperationNumber" length="40" type="ANC" state="M"/>
+		<ZxNode propertyName="OriginationPlace" length="6" type="N" state="M"/>
+		<ZxNode propertyName="DateOpened" length="8" type="N" state="M"/>
+		<ZxNode propertyName="MatureDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="Currency" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="CreditLimit" length="10" type="N" state="M"/>
+		<ZxNode propertyName="SharedCreditLimit" length="10" type="N" state="M"/>
+		<ZxNode propertyName="HighestCredit" length="10" type="N" state="M"/>
+		<ZxNode propertyName="GuaranteeType" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TermsFrequency" length="2" type="AN" state="M"/>
+		<ZxNode propertyName="TermsDuration" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="MonthsLeftforTermsDuration" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="BillingDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="DateOfLastPayment" length="8" type="N" state="M"/>
+		<ZxNode propertyName="ScheduledMonthlyPaymentAmount" length="10" type="N" state="M"/>
+		<ZxNode propertyName="ActualPaymentAmount" length="10" type="N" state="M"/>
+		<ZxNode propertyName="Balance" length="10" type="N" state="M"/>
+		<ZxNode propertyName="DelinquencyTerm" length="2" type="N" state="M"/>
+		<ZxNode propertyName="AmountPastDue" length="10" type="N" state="M"/>
+		<ZxNode propertyName="NoRepayLoanPrincipal31_60" length="10" type="N" state="M"/>
+		<ZxNode propertyName="NoRepayLoanPrincipal61_90" length="10" type="N" state="M"/>
+		<ZxNode propertyName="NoRepayLoanPrincipal91_180" length="10" type="N" state="M"/>
+		<ZxNode propertyName="NoRepayLoanPrincipalOver180" length="10" type="N" state="M"/>
+		<ZxNode propertyName="DelinquencyCounts" length="3" type="N" state="M"/>
+		<ZxNode propertyName="HighestDelinquencyTerm" length="2" type="N" state="M"/>
+		<ZxNode propertyName="FiveCategoryAssetsClassification" length="1" type="N" state="M"/>
+		<ZxNode propertyName="AccountStatus" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TwentyFourMonthsPaymentStatus" length="24" type="AN" state="M"/>
+		<ZxNode propertyName="OverdraftAmountOver180Days" length="10" type="N" state="M"/>
+		<ZxNode propertyName="IdIndicator" length="1" type="N" state="M"/>
+		<ZxNode propertyName="Name" length="30" type="ANC" state="M"/>
+		<ZxNode propertyName="IdentificationType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="IdentificationNumber" length="18" type="ANC" state="M"/>
+		<ZxNode propertyName="ReservedField" length="30" type="AN" state="O"/>
+-->
+	</ZxFormat>
+	<!-- 身份信息段 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.IdentityInfoSection" bottom="true" type="B">
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="Gender" length="1" type="N" state="M"/>
+		<ZxNode propertyName="DateOfBirth" length="8" type="N" state="M"/>
+		<ZxNode propertyName="MaritalStatus" length="2" type="N" state="M"/>
+		<!--<ZxNode propertyName="HighestEducationLevel" length="2" type="N" state="M"/>
+		<ZxNode propertyName="HighestEducationalDegreeObtained" length="1" type="N" state="M"/>
+		<ZxNode propertyName="HomeTelephone" length="25" type="ANC" state="O"/>
+		<ZxNode propertyName="MobileTelephone" length="16" type="AN" state="O"/>
+		<ZxNode propertyName="OfficeTelephone" length="25" type="ANC" state="O"/>
+		<ZxNode propertyName="Email" length="30" type="ANC" state="O"/>
+		<ZxNode propertyName="MailingAddress" length="60" type="ANC" state="M"/>
+		<ZxNode propertyName="PostalCodeOfMailingAddress" length="6" type="N" state="M"/>
+		<ZxNode propertyName="PermanentResidenceAddress" length="60" type="ANC" state="O"/>
+		<ZxNode propertyName="SpouseName" length="30" type="ANC" state="O"/>
+		<ZxNode propertyName="SpouseIdentificationType" length="1" type="AN" state="O"/>
+		<ZxNode propertyName="SpouseIdentificationNumber" length="18" type="ANC" state="O"/>
+		<ZxNode propertyName="SpouseCompanyName" length="60" type="ANC" state="O"/>
+		<ZxNode propertyName="SpouseTelephone" length="25" type="ANC" state="O"/> -->
+	</ZxFormat>
+	<!-- 职业信息段 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.ProfessionalInfoSection" bottom="true" type="C">
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="Occupation" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="CompanyName" length="60" type="ANC" state="M"/>
+		<ZxNode propertyName="IndustrialCodeOfCompany" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="CompanyAddress" length="60" type="ANC" state="O"/>
+		<ZxNode propertyName="PostalCodeOfCompanyAddress" length="6" type="N" state="O"/>
+		<ZxNode propertyName="YearStartedWorking" length="4" type="N" state="O"/>
+		<ZxNode propertyName="Title" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TechnicalTitleLevel" length="1" type="N" state="M"/>
+		<ZxNode propertyName="AnnualIncome" length="10" type="N" state="O"/>
+		<ZxNode propertyName="AccountNumberforSalaryAccount" length="40" type="ANC" state="O"/>
+		<ZxNode propertyName="BankforSalaryAccount" length="14" type="AN" state="O"/>
+	</ZxFormat>
+	<!-- 居住地址段 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.ResidentialAddressSection" bottom="true" type="D">
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="CurrentAddress" length="60" type="ANC" state="M"/>
+		<ZxNode propertyName="PostalCodeOfCurrentAddress" length="6" type="N" state="M"/>
+		<ZxNode propertyName="ResidenceStatus" length="1" type="AN" state="M"/>
+	</ZxFormat>
+	<!-- 担保信息段 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.GuaranteeInfoSection" bottom="true" type="E">
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="Name" length="30" type="ANC" state="M"/>
+		<ZxNode propertyName="IdentificationType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="IdentificationNumber" length="18" type="ANC" state="M"/>
+		<ZxNode propertyName="GuaranteedAmount" length="10" type="N" state="M"/>
+		<ZxNode propertyName="GuranteeSelection" length="1" type="N" state="M"/>
+	</ZxFormat>
+	<!-- 交易标识变更段-->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.TransactionChangeSection" bottom="true" type="F">
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="OperationNumber" length="40" type="ANC" state="M"/>
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="BillingDate" length="8" type="N" state="M"/>
+	</ZxFormat>
+	<!-- 特殊交易段 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.SpecialTradeSection" bottom="true" type="G">
+		<ZxNode propertyName="SegmentIdentifier" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="SpecialTransactionType" length="1" type="N" state="M"/>
+		<ZxNode propertyName="SpecialDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="SpecialAmount" length="10" type="AN" state="M"/>
+		<ZxNode propertyName="ChangingTerms" length="4" type="N" state="M"/>
+		<ZxNode propertyName="DetailedInformation" length="200" type="ANC" state="O"/>
+	</ZxFormat>
+<!-- ===============================变更报文=================================== -->	
+    <ZxFormat class="com.hengtian.zxjk.entity.message.ChangeMessage" messageType="24-4-27">
+     	<!-- 报文名必须放在Children第一个 -->
+        <ZxNode propertyName="NameMessage" class="com.hengtian.zxjk.entity.message.NameChangeMessage" state="M"/>
+        <ZxNode propertyName="HeadMessage" class="com.hengtian.zxjk.entity.message.HeadChangeMessage" state="M"/>
+        <ZxNode propertyName="BodyMessage" class="com.hengtian.zxjk.entity.message.BodyChangeMessage" state="M"/>
+    </ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.NameChangeMessage" bottom="true" type="1">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="8" type="AN" state="M"/>
+		<ZxNode propertyName="Constantvalue" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum" length="3" type="AN" state="M"/>
+	</ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.HeadChangeMessage" bottom="true" type="2">
+		<ZxNode propertyName="DataFormatVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="14" type="N" state="M"/>
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TotalBaseRecords" length="8" type="N" state="M"/>
+	</ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.BodyChangeMessage" bottom="true" type="3">
+		<ZxNode propertyName="OldFinancialOrganizationCode" length="14" type="ANC" state="M"/>
+		<ZxNode propertyName="NewFinancialOrganizationCode" length="40" type="ANC" state="M"/>
+		<ZxNode propertyName="OldOperationNumber" length="14" type="ANC" state="M"/>
+		<ZxNode propertyName="NewOperationNumber" length="40" type="ANC" state="M"/>
+	</ZxFormat>
+<!-- ===============================删除报文======================================= -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.DelMessage" messageType="24-8-27">
+     	<!-- 报文名必须放在Children第一个 -->
+        <ZxNode propertyName="NameMessage" class="com.hengtian.zxjk.entity.message.NameDelMessage" state="M"/>
+        <ZxNode propertyName="HeadMessage" class="com.hengtian.zxjk.entity.message.HeadDelMessage" state="M"/>
+        <ZxNode propertyName="BodyMessage" class="com.hengtian.zxjk.entity.message.BodyDelMessage" state="M"/>
+    </ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.NameDelMessage" bottom="true" type="1">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="8" type="AN" state="M"/>
+		<ZxNode propertyName="Constantvalue" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum" length="3" type="AN" state="M"/>
+	</ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.HeadDelMessage" bottom="true" type="2">
+		<ZxNode propertyName="DataFormatVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="14" type="N" state="M"/>
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="N" state="M"/>
+		<ZxNode propertyName="TotalBaseRecords" length="8" type="N" state="M"/>
+		<ZxNode propertyName="ContactPerson" length="30" type="ANC" state="M"/>
+		<ZxNode propertyName="ContactTelephone" length="25" type="ANC" state="M"/>
+		<ZxNode propertyName="ReservedField" length="30" type="ANC" state="O"/>
+	</ZxFormat>
+	<ZxFormat class="com.hengtian.zxjk.entity.message.BodyDelMessage" type="3">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="ANC" state="M"/>
+		<ZxNode propertyName="OperationNumber" length="40" type="ANC" state="M"/>
+		<ZxNode propertyName="StartBillingDate" length="8" type="N" state="M"/>
+		<ZxNode propertyName="EndBillingDate" length="8" type="N" state="O"/>
+	</ZxFormat>
+	
+<!-- ===============================反馈正常报文=================================== -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetNormalMessage" messageType="24-1-28">
+     	<!-- 报文头必须放在Children第一个 -->
+        <ZxNode propertyName="NameMessage" class="com.hengtian.zxjk.entity.message.RetNameNormalMessage" state="M"/>
+        <ZxNode propertyName="HeadMessage" class="com.hengtian.zxjk.entity.message.RetHeadNormalMessage" state="M"/>
+        <ZxNode propertyName="BodyMessage" class="com.hengtian.zxjk.entity.message.RetBodyNormalMessage" state="M"/>
+    </ZxFormat>
+	<!-- 反馈正常报文名 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetNameNormalMessage" bottom="true" type="1">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="6" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum1" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum2" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="IdentifierBit" length="1" type="N" state="M"/>
+	</ZxFormat>
+	<!-- 反馈正常报文头 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetHeadNormalMessage" bottom="true" type="2">
+		<ZxNode propertyName="DataFormatVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="14" type="N" state="M"/>
+		<ZxNode propertyName="SrcNameMessage" length="27" type="AN" state="M"/>
+		<ZxNode propertyName="ErrorNameMessage" length="27" type="AN" state="M"/>
+		<ZxNode propertyName="TotalBaseRecords" length="10" type="N" state="M"/>
+		<ZxNode propertyName="ErrorReason" length="10" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="N" state="M"/>
+		<ZxNode propertyName="ContactPerson" length="30" type="ANC" state="O"/>
+		<ZxNode propertyName="ContactTelephone" length="25" type="ANC" state="O"/>
+		<ZxNode propertyName="ReservedField" length="30" type="ANC" state="M"/>
+	</ZxFormat>
+	<!-- 反馈正常报文体 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetBodyNormalMessage" type="3">
+		<ZxNode propertyName="ErrorNameMessage" length="27" type="AN" state="M"/>
+		<ZxNode propertyName="ErrorReasionInfo" length="35" type="AN" state="M"/>
+		<ZxNode propertyName="ErrorUserHistory" length="60" type="ANC" state="C"/>
+	</ZxFormat>
+	
+<!-- ===============================反馈变更报文=================================== -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetChangeMessage" messageType="24-4-28">
+     	<!-- 报文头必须放在Children第一个 -->
+        <ZxNode propertyName="NameMessage" class="com.hengtian.zxjk.entity.message.RetNameChangeMessage" state="M"/>
+        <ZxNode propertyName="HeadMessage" class="com.hengtian.zxjk.entity.message.RetHeadChangeMessage" state="M"/>
+        <ZxNode propertyName="BodyMessage" class="com.hengtian.zxjk.entity.message.RetBodyChangeMessage" state="M"/>
+    </ZxFormat>
+    <!-- 反馈变更报文名 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetNameChangeMessage" bottom="true" type="1">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="8" type="AN" state="M"/>
+		<ZxNode propertyName="Constantvalue" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="RetType" length="1" type="AN" state="M"/>
+	</ZxFormat>
+	<!-- 反馈变更报文头 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetHeadChangeMessage" bottom="true" type="2">
+		<ZxNode propertyName="DataFormatVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="14" type="N" state="M"/>
+		<ZxNode propertyName="ErrorNameMessage" length="27" type="ANC" state="M"/>
+		<ZxNode propertyName="ErrorInfo" length="2" type="N" state="M"/>
+	</ZxFormat>
+	<!-- 反馈变更报文体 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetBodyChangeMessage" type="3">
+		<ZxNode propertyName="ErrorCode" length="2" type="AN" state="M"/>
+		<ZxNode propertyName="ErrorHistory" length="108" type="ANC" state="M"/>
+	</ZxFormat>
+<!-- ===============================反馈删除报文=================================== -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetDelMessage" messageType="24-4-28">
+     	<!-- 报文头必须放在Children第一个 -->
+        <ZxNode propertyName="NameMessage" class="com.hengtian.zxjk.entity.message.RetNameDelMessage" state="M"/>
+        <ZxNode propertyName="HeadMessage" class="com.hengtian.zxjk.entity.message.RetHeadDelMessage" state="M"/>
+        <ZxNode propertyName="BodyMessage" class="com.hengtian.zxjk.entity.message.RetBodyDelMessage" state="M"/>
+    </ZxFormat>
+    <!-- 反馈删除报文名 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetNameDelMessage" bottom="true" type="1">
+		<ZxNode propertyName="FinancialOrganizationCode" length="14" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="8" type="AN" state="M"/>
+		<ZxNode propertyName="Constantvalue" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="ReportType" length="1" type="AN" state="M"/>
+		<ZxNode propertyName="FlowNum" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="RetType" length="1" type="AN" state="M"/>
+	</ZxFormat>
+	<!-- 反馈删除报文头 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetHeadDelMessage" bottom="true" type="2">
+		<ZxNode propertyName="DataFormatVersionNumber" length="3" type="AN" state="M"/>
+		<ZxNode propertyName="MessageRiseTime" length="14" type="N" state="M"/>
+		<ZxNode propertyName="ErrorNameMessage" length="27" type="ANC" state="M"/>
+		<ZxNode propertyName="ErrorInfo" length="2" type="N" state="M"/>
+		<ZxNode propertyName="ContactPerson" length="30" type="ANC" state="O"/>
+		<ZxNode propertyName="ContactTelephone" length="25" type="ANC" state="O"/>
+		<ZxNode propertyName="ReservedField" length="30" type="ANC" state="M"/>
+	</ZxFormat>
+	<!-- 反馈删除报文体 -->
+	<ZxFormat class="com.hengtian.zxjk.entity.message.RetBodyDelMessage" type="3">
+		<ZxNode propertyName="ErrorCode" length="2" type="AN" state="M"/>
+		<ZxNode propertyName="BillingDate" length="6" type="N" state="M"/>
+		<ZxNode propertyName="ErrorHistory" length="62" type="ANC" state="M"/>
+	</ZxFormat>
+</ZxMsgFormats>
