@@ -86,7 +86,7 @@ public class Test {
 //		Object obj =rx.parseTxtToObject("BCH1088000004 20120300A100B");
 		// ‘Ÿ±‡¬Î
 		rx.parseObjectToTxt(borrowerInformationMessageSet);
-		
+		//rx.parseObjectToTxt(borrowerInformationMessageSet);
 	}
 
 }
